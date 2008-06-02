@@ -1,0 +1,13 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+           xmlns:py="http://genshi.edgewall.org/"
+           xmlns:xi="http://www.w2.org/2001/XInclude"
+           xml:lang="en"
+           py:strip="">
+  <head py:match="head" py:attrs="select('@*')">
+    <meta py:replace="select('*|text()')" />
+  </head>
+  <body py:match="body" py:attrs="select('@*')">
+    <h1>License Validation Service</h1>
+    <div py:replace="select('*|text()')">This page has no content.</div>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+*.pyc
+*~
+validator.db
+validator.egg-info
+eggs
+*#
+.#*

@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xml:lang="en">
+<xi:include href="../site.html" />
+<head>
+    <title>Validator</title>
+    <style type="text/css">
+    .input
+    {
+    	vertical-align: top;
+    	font-family: monospace;
+    	font-size: 10pt;
+    	width: 40em;
+    	border: #000 1px solid;
+   	}
+   	form
+   	{
+   		margin-bottom: 1ex;
+   	}
+    label
+    {
+    	font-family: sans-serif;
+    }
+    </style>
+</head>
+<body>
+${h.start_form(h.url(action='parseDirectInput'), multipart=True)}
+<div>
+<label for="input">Validate by direct input:</label><br />
+${h.text_area('input', size="80x10")}<br />
+${h.submit(value='Submit code to analysis')}
+</div>
+${h.end_form()}
+
+${h.start_form(h.url(action='parseOnlineDocument'), multipart=True)}
+<div>
+<label for="input">Validate an online document:</label><br />
+${h.text_field('input')}<br />
+${h.submit(value='Submit the remote file to analysis')}
+</div>
+${h.end_form()}
+
+${h.start_form(h.url(action='parseUploadedFile'), multipart=True)}
+<div>
+<label for="input">Validate by file upload:</label><br />
+${h.file_field('input')}<br />
+${h.submit(value='Submit the file to analysis')}
+</div>
+${h.end_form()}
+
+<div py:if="c.error or c.code">
+<h1>Submission details:</h1>
+<div py:if="c.error" style="background-color:#fff;color:#f00">$c.error</div>
+<div py:if="c.encoding" style="margin-bottom:1ex;font-color:#111">Detected encoding is <strong>$c.encoding</strong>.</div>
+<div py:if="c.code" style="margin:0;padding:0;background-color:#eee;color:#000;white-space:pre;font-family:monospace">$c.code</div>
+</div>
+</body>
+</html>
