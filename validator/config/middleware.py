@@ -11,6 +11,7 @@ from pylons.middleware import error_mapper, ErrorDocuments, ErrorHandler, \
 from pylons.wsgiapp import PylonsApp
 
 from validator.config.environment import load_environment
+from validator.lib import helpers
 
 def make_app(global_conf, full_stack=True, **app_conf):
     """Create a Pylons WSGI application and return it

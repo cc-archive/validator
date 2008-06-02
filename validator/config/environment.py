@@ -20,14 +20,17 @@ def load_environment(global_conf, app_conf):
 
     # Initialize config with the basic options
     config.init_app(global_conf, app_conf, package='validator',
-                    template_engine='mako', paths=paths)
+                    template_engine='genshi', paths=paths)
 
     config['routes.map'] = make_map()
     config['pylons.g'] = app_globals.Globals()
     config['pylons.h'] = validator.lib.helpers
-
+    
     # Customize templating options via this variable
     tmpl_options = config['buffet.template_options']
+    tmpl_options['genshi.default_doctype'] = 'xhtml'
+    tmpl_options['genshi.default_encoding'] = 'utf-8'
+    tmpl_options['genshi.default_format'] = 'xhtml'    
 
     # CONFIGURATION OPTIONS HERE (note: all config options will override
     # any Pylons config options)
