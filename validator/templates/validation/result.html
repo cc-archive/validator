@@ -17,15 +17,15 @@
     </style>
 </head>
 <body>
-<div>
 <div py:if="c.result.deprecated is True" class="warning">
 Warning! The Web page uses deprecated means of expressing <a href="http://www.w3.org/TR/REC-rdf-syntax/"><abbr title="Resource Description Framework">RDF</abbr></a>. If you are its author, we strongly encourage you to try <a href="http://www.w3.org/TR/xhtml-rdfa-primer/"><abbr title="Resource Description Framework attributes">RDFa</abbr></a> instead.
 </div>
-<h1>Licensed objects found:</h1>
+<py:if test="len(c.result['licensedObjects']) > 0">
+<h2>Licensed objects found:</h2>
 <ul>
 <li py:for="subject in c.result['licensedObjects']">
 <py:with vars="licenses=c.result['licensedObjects'][subject]">
-<h2><strong>${subject}</strong></h2>
+<h3><strong>${subject}</strong></h3>
 <div>This object is licensed under the following license<py:if test="len(licenses)>1">s</py:if>:</div>
 <!-- ! DC:title, attribution -->
 <ul class="Licenses">
@@ -54,7 +54,10 @@ Warning! The Web page uses deprecated means of expressing <a href="http://www.w3
 </py:with>
 </li>
 </ul>
-</div>
-<div id="another"><a href="/">Validate another document</a>.</div>
+</py:if>
+<py:if test="len(c.result['licensedObjects']) == 0">
+<div>No machine&#x2011;readable information about licensing has been found.</div>
+</py:if>
+<div id="footer"><a href="/">Validate another document</a>. Visit the Web site of <a href="http://creativecommons.org/">Creative Commons</a>. Read <a href="/validation/about">about this software</a>.</div>
 </body>
 </html>

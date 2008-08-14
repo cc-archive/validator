@@ -6,28 +6,26 @@
 <head>
     <title>Validator</title>
     <style type="text/css">
-    .input, .warning
-    {
-    	vertical-align: top;
-    	font-family: monospace;
-    	font-size: 10pt;
-    	width: 40em;
-    	border: #000 1px solid;
-   	}
    	form
    	{
    		margin-bottom: 1ex;
    	}
    	input, textarea
    	{
-   		/*background-color: #eee;
-   		color: #000;*/
    		border: #000 1px solid;
    		margin-bottom: 2px;
+   		font-family: monospace;
+   		font-size: 100%;
+   		width: 40em;
    	}
-    label
+    label, input.button
     {
+    	width: auto;
     	font-family: sans-serif;
+    }
+    input.button
+    {
+    	font-size: 80%;
     }
     </style>
 </head>
@@ -36,7 +34,7 @@ ${h.start_form(h.url(action='parseDirectInput'), method='post', multipart=True)}
 <div>
 <label for="input_direct">Validate by direct input:</label><br />
 ${h.text_area('input_direct', size="80x10")}<br />
-${h.submit(value='Submit code to analysis')}
+${h.submit(class_='button',value='Submit the code to analysis')}
 </div>
 ${h.end_form()}
 
@@ -44,7 +42,7 @@ ${h.start_form(h.url(action='parseOnlineDocument'), multipart=True)}
 <div>
 <label for="input_remote">Validate an online document:</label><br />
 ${h.text_field('input_remote')}<br />
-${h.submit(value='Submit the remote file to analysis')}
+${h.submit(class_='button',value='Submit the remote file to analysis')}
 </div>
 ${h.end_form()}
 
@@ -52,15 +50,9 @@ ${h.start_form(h.url(action='parseUploadedFile'), multipart=True)}
 <div>
 <label for="input_upload">Validate by file upload:</label><br />
 ${h.file_field('input_upload')}<br />
-${h.submit(value='Submit the file to analysis')}
+${h.submit(class_='button',value='Submit the file to analysis')}
 </div>
 ${h.end_form()}
-
-<div py:if="c.error or c.code">
-<h1>Submission details:</h1>
-<div py:if="c.error" style="background-color:#fff;color:#f00">$c.error</div>
-<div py:if="c.encoding" style="margin-bottom:1ex;font-color:#111">Detected encoding is <strong>$c.encoding</strong>.</div>
-<div py:if="c.code" style="margin:0;padding:0;background-color:#eee;color:#000;white-space:pre;font-family:monospace">$c.code</div>
-</div>
+<div id="footer">Visit the Web site of <a href="http://creativecommons.org/">Creative Commons</a>. Read <a href="/validation/about">about this software</a>.</div>
 </body>
 </html>
