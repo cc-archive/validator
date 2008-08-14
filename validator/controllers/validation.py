@@ -11,7 +11,6 @@ class ValidationController(BaseController):
 
     def __init__(self):
         self.parser = libvalidator()
-        pass
 
     def index(self):
         return render('validation.index')
