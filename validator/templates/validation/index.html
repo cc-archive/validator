@@ -6,7 +6,7 @@
 <head>
     <title>Validator</title>
     <style type="text/css">
-    .input
+    .input, .warning
     {
     	vertical-align: top;
     	font-family: monospace;
@@ -18,6 +18,13 @@
    	{
    		margin-bottom: 1ex;
    	}
+   	input, textarea
+   	{
+   		/*background-color: #eee;
+   		color: #000;*/
+   		border: #000 1px solid;
+   		margin-bottom: 2px;
+   	}
     label
     {
     	font-family: sans-serif;
@@ -25,26 +32,26 @@
     </style>
 </head>
 <body>
-${h.start_form(h.url(action='parseDirectInput'), multipart=True)}
+${h.start_form(h.url(action='parseDirectInput'), method='post', multipart=True)}
 <div>
-<label for="input">Validate by direct input:</label><br />
-${h.text_area('input', size="80x10")}<br />
+<label for="input_direct">Validate by direct input:</label><br />
+${h.text_area('input_direct', size="80x10")}<br />
 ${h.submit(value='Submit code to analysis')}
 </div>
 ${h.end_form()}
 
 ${h.start_form(h.url(action='parseOnlineDocument'), multipart=True)}
 <div>
-<label for="input">Validate an online document:</label><br />
-${h.text_field('input')}<br />
+<label for="input_remote">Validate an online document:</label><br />
+${h.text_field('input_remote')}<br />
 ${h.submit(value='Submit the remote file to analysis')}
 </div>
 ${h.end_form()}
 
 ${h.start_form(h.url(action='parseUploadedFile'), multipart=True)}
 <div>
-<label for="input">Validate by file upload:</label><br />
-${h.file_field('input')}<br />
+<label for="input_upload">Validate by file upload:</label><br />
+${h.file_field('input_upload')}<br />
 ${h.submit(value='Submit the file to analysis')}
 </div>
 ${h.end_form()}

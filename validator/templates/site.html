@@ -4,10 +4,19 @@
            xml:lang="en"
            py:strip="">
   <head py:match="head" py:attrs="select('@*')">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <meta py:replace="select('*|text()')" />
+    <style type="text/css">
+    body { background-color: #fff; color: #000; }
+    .infobox, .warning { padding: 1ex 1em; margin-bottom: 1ex; width: 35em; }
+    .infobox { border: #ffff66 1px solid; background-color: #fffff3; color: #000; }
+    .warning { border: #ff6666 1px solid; background-color: #fff3f3; color: #000; }
+    #another { font-size: smaller; margin-top: 2ex; width: 15em; }
+    </style>
   </head>
   <body py:match="body" py:attrs="select('@*')">
     <h1>License Validation Service</h1>
+    <div class="infobox">This service allows you to validate license information embedded in Web pages.</div>
     <div py:replace="select('*|text()')">This page has no content.</div>
   </body>
 </html>

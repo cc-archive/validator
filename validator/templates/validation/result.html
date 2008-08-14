@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xml:lang="en">
+<xi:include href="../site.html" />
+<head>
+    <title>Results</title>
+    <style type="text/css">
+    h2 { padding: 0; margin: 0 0 1ex 0; }
+    table { border: #000 1px solid; border-style: collapse; border-spacing: 0; margin-bottom: 2ex; }
+    th { width: 15em; text-align: left; }
+    td { width: 15em; }
+    th, td { vertical-align: baseline; border: #000 1px solid; padding: 0.5ex 0.5em; }
+    caption { margin: 0.5ex auto; }
+    ul.Licenses, ul.Licenses li { margin-left: 0; padding-left: 0; } 
+    .Licenses li { list-style-type: none; }
+    </style>
+</head>
+<body>
+<div>
+<div py:if="c.result.deprecated is True" class="warning">
+Warning! The Web page uses deprecated means of expressing <a href="http://www.w3.org/TR/REC-rdf-syntax/"><abbr title="Resource Description Framework">RDF</abbr></a>. If you are its author, we strongly encourage you to try <a href="http://www.w3.org/TR/xhtml-rdfa-primer/"><abbr title="Resource Description Framework attributes">RDFa</abbr></a> instead.
+</div>
+<h1>Licensed objects found:</h1>
+<ul>
+<li py:for="subject in c.result['licensedObjects']">
+<py:with vars="licenses=c.result['licensedObjects'][subject]">
+<h2><strong>${subject}</strong></h2>
+<div>This object is licensed under the following license<py:if test="len(licenses)>1">s</py:if>:</div>
+<!-- ! DC:title, attribution -->
+<ul class="Licenses">
+<li py:for="license in licenses">
+<py:with vars="data=c.result['licenses'][license]">
+<py:choose test="value_of('data', 'default')">
+  <py:when test="default">${license}</py:when>
+  <py:otherwise>
+    <table>
+    <caption><a href="${data.uri}">Creative&#160;Commons ${data.title.replace('-', '&#x2011;')}<py:if test="data.version">&#160;${data.version}</py:if> ${data.jurisdiction.title().replace(' ', '&#160;')}</a></caption>
+    <tbody>
+    <tr><th>License authorship</th><td><a href="http://creativecommons.org/">Creative&#160;Commons</a></td></tr>
+    <tr><th>Version</th><td>${data.version}</td></tr>
+    <tr><th>Jurisdiction</th><td>${data.jurisdiction.title().replace(' ', '&#160;')}</td></tr>
+    <tr><th>Superseded?</th><td><py:choose test="data.superseded"><py:when test="True">Yes</py:when><py:otherwise>No</py:otherwise></py:choose></td></tr>
+    <tr><th>Deprecated?</th><td><py:choose test="data.deprecated"><py:when test="True">Yes</py:when><py:otherwise>No</py:otherwise></py:choose></td></tr>
+    <tr><th><a href="http://freedomdefined.org/Definition">Free Cultural Works?</a></th><td><py:choose test="data.libre"><py:when test="True">Yes</py:when><py:otherwise>No</py:otherwise></py:choose></td></tr>
+<!-- ! add permits, prohibits, and requires once the issue with cc.license.git is resolved -->
+    </tbody>
+    </table>
+  </py:otherwise>
+</py:choose>
+</py:with>
+</li>
+</ul>
+</py:with>
+</li>
+</ul>
+</div>
+<div id="another"><a href="/">Validate another document</a>.</div>
+</body>
+</html>
