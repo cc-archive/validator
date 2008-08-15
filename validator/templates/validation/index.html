@@ -30,7 +30,7 @@
     </style>
 </head>
 <body>
-${h.start_form(h.url(action='parseDirectInput'), method='post', multipart=True)}
+${h.start_form(h.url(action='parseDirectInput'), method='post')}
 <div>
 <label for="input_direct">Validate by direct input:</label><br />
 ${h.text_area('input_direct', size="80x10")}<br />
@@ -38,10 +38,10 @@ ${h.submit(class_='button',value='Submit the code to analysis')}
 </div>
 ${h.end_form()}
 
-${h.start_form(h.url(action='parseOnlineDocument'), multipart=True)}
+${h.start_form(h.url(action='parseOnlineDocument'), method='get')}
 <div>
-<label for="input_remote">Validate an online document:</label><br />
-${h.text_field('input_remote')}<br />
+<label for="uri">Validate an online document:</label><br />
+${h.text_field('uri')}<br />
 ${h.submit(class_='button',value='Submit the remote file to analysis')}
 </div>
 ${h.end_form()}

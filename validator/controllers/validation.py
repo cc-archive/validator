@@ -19,6 +19,9 @@ class ValidationController(BaseController):
         return render('validation.about')
     
     def parseDirectInput(self):
+        if not request.POST.has_key('input_direct'):
+            c.error = 'No input provided.'
+            return render('validation.error')
         try:
             c.result = self.parser.parse(request.POST['input_direct'])
         except:
@@ -28,10 +31,13 @@ class ValidationController(BaseController):
         
     def parseOnlineDocument(self):
         reHyperlink = re.compile('^(?:data:|((ftp|gopher|https?)://))\S+$', re.IGNORECASE)
+        if not request.GET.has_key('uri'):
+            c.error = 'No Uniform Resource Identifier provided.'
+            return render('validation.error')
         try:
-            if reHyperlink.search(request.POST['input_remote']) is not None:
-                remote = urllib.urlopen(request.POST['input_remote'])
-                c.result = self.parser.parse(remote.read(), location=request.POST['input_remote'], headers=remote.info())
+            if reHyperlink.search(request.GET['uri']) is not None:
+                remote = urllib.urlopen(request.GET['uri'])
+                c.result = self.parser.parse(remote.read(), location=request.GET['uri'], headers=remote.info())
             else:
                 raise 'Unsupported Uniform Resource Identifier.', ''
         except:
@@ -40,6 +46,11 @@ class ValidationController(BaseController):
         return render('validation.result')
         
     def parseUploadedFile(self):
+        try:
+            request.POST['input_upload'].value
+        except:
+            c.error = 'No file uploaded.'
+            return render('validation.error')
         try:
             c.result = self.parser.parse(request.POST['input_upload'].value)
         except:
