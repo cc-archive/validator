@@ -12,7 +12,7 @@ setup(
                       'nose',
                       'Paste',
                       'WebHelpers<0.4',
-                      'Pylons>=0.9.6.1',
+                      'Pylons=0.9.6.1',
                       'PylonsGenshi',
                       'SQLAlchemy',
                       'libvalidator'
