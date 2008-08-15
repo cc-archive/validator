@@ -6,6 +6,7 @@
 
 - cc:morePermissions (URI), cc:jurisdiction (URI), cc:legalcode (URI)
 - cc:deprecatedOn (date)
+- display prohibitions, requirements, and permissions via cc.license
 - validate the URIs appearing in the license information
 - validate the factual accuracy <cc:License> blocks in deprecated RDF/XML
 - MIME type detection and overriding
