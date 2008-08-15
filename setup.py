@@ -7,7 +7,7 @@ except ImportError:
 
 setup(
     name='validator',
-    author='Hugo Dworak',
+    author='Hugo Dworak and Creative Commons',
     install_requires=['setuptools',
                       'nose',
                       'Paste',
