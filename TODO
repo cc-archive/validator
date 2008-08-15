@@ -1,3 +1,17 @@
-To do list (in random order):
-* Change http://validator-beta.creativecommons.org/validation/parseOnlineDocument to a GET so that the URLs are bookmarkable
+- DC:title (for licensed objects)
+- cc:attributionName, cc:attributionURL (URI)
+- code documentation (like the one in pyRdfa)
+- unit tests for Pylons
+- cc-devel and labs summary of what was achieved
 
+- cc:morePermissions (URI), cc:jurisdiction (URI), cc:legalcode (URI)
+- cc:deprecatedOn (date)
+- validate the URIs appearing in the license information
+- validate the factual accuracy <cc:License> blocks in deprecated RDF/XML
+- MIME type detection and overriding
+- XHTML+RDFa output once Genshi supporst it
+- Creative Commons layout
+- localisation
+- user manual
+- developer manual with diagrams (UML?)
+- statistics and logs
