@@ -30,9 +30,9 @@ Warning! The Web page uses deprecated means of expressing <a href="http://www.w3
 <!-- ! DC:title, attribution -->
 <ul class="Licenses">
 <li py:for="license in licenses">
+<py:if test="not c.result['licenses'].has_key(license)">${license}</py:if>
+<py:if test="c.result['licenses'].has_key(license)">
 <py:with vars="data=c.result['licenses'][license]">
-<py:if test="not value_of('data')">${license}</py:if>
-<py:if test="value_of('data')">
     <table>
     <caption><a href="${data.uri}">Creative&#160;Commons ${data.title.replace('-', '&#x2011;')}<py:if test="data.version">&#160;${data.version}</py:if> ${data.jurisdiction.title().replace(' ', '&#160;')}</a></caption>
     <tbody>
@@ -45,17 +45,15 @@ Warning! The Web page uses deprecated means of expressing <a href="http://www.w3
 <!-- ! add permits, prohibits, and requires once the issue with cc.license.git is resolved -->
     </tbody>
     </table>
-</py:if>
 </py:with>
+</py:if>
 </li>
 </ul>
 </py:with>
 </li>
 </ul>
 </py:if>
-<py:if test="len(c.result['licensedObjects']) == 0">
-<div>No machine&#x2011;readable information about licensing has been found.</div>
-</py:if>
+<div class="warning" py:if="len(c.result['licensedObjects']) == 0">No machine&#x2011;readable information about licensing has been found.</div>
 <div id="footer"><a href="/">Validate another document</a>. Visit the Web site of <a href="http://creativecommons.org/">Creative Commons</a>. Read <a href="/validation/about">about this software</a>.</div>
 </body>
 </html>

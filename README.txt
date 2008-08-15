@@ -1,19 +1,17 @@
-This file is for you to describe the validator application. Typically
-you would include information such as the information below:
-
 Installation and Setup
 ======================
 
-Install ``validator`` using easy_install::
+The following instructions apply to Ubuntu 8.04 Hardy Heron.
+Assumption: libvalidator is installed and available.
 
-    easy_install validator
+$ mkdir ~/deploy
+$ cd ~/deploy
+$ git clone git://code.creativecommons.org/validator.git
+$ cd validator
+$ virtualenv --no-site-packages .
+$ sudo easy_install Paste PylonsGenshi SQLAlchemy
+$ paster serve --reload development.ini
 
-Make a config file as follows::
-
-    paster make-config validator config.ini
-
-Tweak the config file as appropriate and then setup the application::
-
-    paster setup-app config.ini
-
-Then you are ready to go.
+To see the Web application running:
+$ sudo apt-get install lynx
+$ lynx 127.1:5000
