@@ -17,6 +17,7 @@ $ python bootstrap/bootstrap.py
 $ buildout
 $ buildout install
 $ python setup.py bdist_egg
+$ sudo easy_install dist/validator-0.0.0dev-py2.5.egg
 $ paster serve --reload development.ini
 
 To see the Web application running:
