@@ -31,19 +31,7 @@
 </head>
 <body>
 
-<h2>Samples</h2>
-
-<p>
-You can see how
-<a href="http://validator.creativecommons.org/validation/parseOnlineDocument?uri=http://validator.creativecommons.org/samples/rdfa.html">
-an example RDFa document validates</a>,
-and how we validate
-<a href="http://validator.creativecommons.org/validation/parseOnlineDocument?uri=http://validator.creativecommons.org/samples/rdf-comment-old-namespace.html">
-deprecated RDF-in-a-comment metadata
-</a>.
-</p>
-
-<h2>Submit your own document</h2>
+<h2>Validate a document</h2>
 
 ${h.start_form(h.url(action='parseDirectInput'), method='post')}
 <div>
@@ -68,6 +56,19 @@ ${h.file_field('input_upload')}<br />
 ${h.submit(class_='button',value='Submit the file to analysis')}
 </div>
 ${h.end_form()}
+
+<h2>Samples</h2>
+
+<p>
+You can see how
+<a href="http://validator.creativecommons.org/validation/parseOnlineDocument?uri=http://validator.creativecommons.org/samples/rdfa.html">
+an example RDFa document validates</a>,
+and how we validate
+<a href="http://validator.creativecommons.org/validation/parseOnlineDocument?uri=http://validator.creativecommons.org/samples/rdf-comment-old-namespace.html">
+deprecated RDF-in-a-comment metadata
+</a>.
+</p>
+
 <div id="footer">Visit the Web site of <a href="http://creativecommons.org/">Creative Commons</a>. Read <a href="/validation/about">about this software</a>.</div>
 </body>
 </html>
