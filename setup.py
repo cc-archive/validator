@@ -15,7 +15,8 @@ setup(
                       'Pylons == 0.9.6.1',
                       'PylonsGenshi',
                       'SQLAlchemy',
-                      'libvalidator'
+                      'libvalidator',
+                      'lxml'
                       ],
     packages=find_packages(exclude=['ez_setup',]),
     include_package_data=True,

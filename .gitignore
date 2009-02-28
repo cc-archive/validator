@@ -1,7 +1,14 @@
 *.pyc
 *~
+*#
+.#*
+bin
+develop-eggs
+dist
 validator.db
 validator.egg-info
 eggs
-*#
-.#*
+lib
+include
+.coverage
+.installed.cfg
