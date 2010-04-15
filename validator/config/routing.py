@@ -12,14 +12,9 @@ def make_map():
     map = Mapper(directory=config['pylons.paths']['controllers'],
                  always_scan=config['debug'])
 
-    # The ErrorController route (handles 404/500 error pages); it should
-    # likely stay at the top, ensuring it can always be resolved
-    map.connect('error/:action/:id', controller='error')
-
-    # CUSTOM ROUTES HERE
-    map.connect('', controller='validation', action='index')
+    map.connect("home", "/", controller="validation", action="index")
+    map.connect(None, "/{action}", controller="validation")
+    map.connect('/{action}')
     
-    map.connect(':controller/:action/:id')
-    map.connect('*url', controller='template', action='view')
-
     return map
+
