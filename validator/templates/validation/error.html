@@ -9,7 +9,7 @@
 <body>
 <h2>An error has occurred</h2>
 <div py:if="c.error" class="warning"><span class="message">${c.error}</span></div>
-<div id="footer"><a href="/">Validate another document</a>. Visit the Web site of <a href="http://creativecommons.org/">Creative Commons</a>. Read <a href="/validation/about">about this software</a>.</div>
+<div id="footer"><a href="${h.url(action='')}">Validate another document</a>. Visit the Web site of <a href="http://creativecommons.org/">Creative Commons</a>. Read <a href="${h.url(action='about')}">about this software</a>.</div>
 
 </body>
 </html>

@@ -54,6 +54,6 @@ Warning! The Web page uses deprecated means of expressing <a href="http://www.w3
 </ul>
 </py:if>
 <div class="warning" py:if="len(c.result['licensedObjects']) == 0">No machine&#x2011;readable information about licensing has been found.</div>
-<div id="footer"><a href="/">Validate another document</a>. Visit the Web site of <a href="http://creativecommons.org/">Creative Commons</a>. Read <a href="/validation/about">about this software</a>.</div>
+<div id="footer"><a href="${h.url(action='')}">Validate another document</a>. Visit the Web site of <a href="http://creativecommons.org/">Creative Commons</a>. Read <a href="${h.url(action='about')}">about this software</a>.</div>
 </body>
 </html>
