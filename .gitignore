@@ -6,7 +6,7 @@ bin
 develop-eggs
 dist
 validator.db
-validator.egg-info
+*.egg-info
 eggs
 lib
 include
