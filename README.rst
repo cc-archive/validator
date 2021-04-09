@@ -29,8 +29,8 @@ It is now time to pull the source code of the ``libvalidator`` and the
 
   $ mkdir ~/deploy
   $ cd ~/deploy
-  $ git clone git://code.creativecommons.org/libvalidator.git
-  $ git clone git://code.creativecommons.org/validator.git
+  $ git clone git@github.com:cc-archive/libvalidator.git
+  $ git clone git@github.com:cc-archive/validator.git
 
 Once you have retrieved both repositories, you can build the ``validator``
 using the development configuration::
