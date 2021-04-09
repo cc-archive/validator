@@ -57,4 +57,3 @@ To use the Web application, install a Web client, for instance::
 and direct it to <http://0:5000>::
 
   $ links http://0:5000
-
